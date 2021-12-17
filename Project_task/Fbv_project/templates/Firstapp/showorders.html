@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>All Orders</title>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;">All Laptop Orders</h1>
+    <div class="container">
+        <table class="table table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Company</th>
+            <th>Model_name</th>
+            <th>RAM</th>
+            <th>ROM</th>
+            <th>Processor</th>
+            <th>Price</th>
+            <th>Weight</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for laptop in lap_obj %}
+            <tr>
+                <td>{{laptop.id}}</td>
+                <td>{{laptop.company}}</td>
+                <td>{{laptop.model_name}}</td>
+                <td>{{laptop.ram}}</td>
+                <td>{{laptop.rom}}</td>
+                <td>{{laptop.processor}}</td>
+                <td>{{laptop.price}}</td>
+                <td>{{laptop.weight}}</td>
+                <td><a href="{% url 'update' laptop.id %}"><button>Update</button></a></td>
+                <td><a href="{% url 'delete' laptop.id %}"><button>Delete</button></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+        <a href="{% url 'add_order' %}"><button class="btn btn-primary">Add Orders</button></a>
+    </div>
+
+{% endblock %}

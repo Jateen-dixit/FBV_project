@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title>Delete Order</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+      <p>Are You Sure to delete this order with compnay name {{lap_obj.company}} ??</p>
+      {% csrf_token %}
+      <a href="{% url 'delete' lap_obj.id %}"><button>delete</button></a>
+    </form>
+    <br>
+    <a href="{% url 'show_order' %}"><button>Cancel</button></a>
+{% endblock %}
